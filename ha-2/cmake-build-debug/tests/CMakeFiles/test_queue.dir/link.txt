@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -std=c99 -Wall -Wextra -Wshadow -g -O0 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/test_queue.dir/test_queue.c.o CMakeFiles/test_queue.dir/__/src/priority_queue.c.o  -o test_queue /usr/local/lib/libcheck.dylib 

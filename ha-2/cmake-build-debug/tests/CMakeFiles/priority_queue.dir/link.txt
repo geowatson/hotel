@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -std=c99 -Wall -Wextra -Wshadow -g -O0 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/priority_queue.dir/__/src/priority_queue.c.o  -o priority_queue 

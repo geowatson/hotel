@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/cc  -std=c99 -Wall -Wextra -Wshadow -g -O0 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/test_stack.dir/test_stack.c.o CMakeFiles/test_stack.dir/__/src/stack.c.o  -o test_stack /usr/local/lib/libcheck.dylib 
