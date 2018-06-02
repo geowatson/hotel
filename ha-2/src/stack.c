@@ -82,7 +82,11 @@ double pop()
         stack = stack->prev;
         stack->next = NULL;
     }
-    // free unused variables (node)
+    /*
+     * Free unused variables (node)
+     * Undefined behaviour if _temp somehow
+     * was not allocated by malloc.
+     */
     free(_temp);
 
     return temp;

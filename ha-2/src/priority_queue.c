@@ -51,7 +51,6 @@ int insert(double value, int key)
         queue->prev = NULL;
     }
     else {
-        struct Node* temp;
         curr->prev = queue;
         queue->next = curr;
         queue = curr;
@@ -59,16 +58,15 @@ int insert(double value, int key)
 
         // swap before keys are going to be accurate
         while (curr->prev != NULL && curr->key >= curr->prev->key) {
-            temp = curr->prev;
             // swap items
-            int k1 = temp->key;
-            double d1 = temp->value;
-            temp->key = curr->key;
-            temp->value = curr->value;
+            int k1 = curr->prev->key;
+            double d1 = curr->prev->value;
+            curr->prev->key = curr->key;
+            curr->prev->value = curr->value;
             curr->key = k1;
             curr->value = d1;
             // sett curr to temp (prev value)
-            curr = temp;
+            curr = curr->prev;
         }
     }
 
@@ -98,7 +96,12 @@ double extract_min()
         queue = queue->prev;
         queue->next = NULL;
     }
-    // free unused memory
+    /*
+     * Free unused variables (node)
+     * Undefined behaviour if _temp somehow
+     * was not allocated by malloc.
+     */
     free(_temp);
+
     return temp;
 }

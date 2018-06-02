@@ -17,10 +17,10 @@ START_TEST (test_queue)
         ck_assert_int_eq(13, (int)extract_min());
         // normal insertion
         for (int i = 0; i < 100; ++i)
-            insert(i, i);
+            insert(MAXFLOAT, i);
         // free storage
         for (int i = 0; i < 100; ++i)
-            ck_assert_int_eq(i, (int)extract_min());
+            ck_assert_float_eq(MAXFLOAT, extract_min());
         // inverse insertion
         for (int i = 0; i < 100; ++i)
             insert(i, 100 - i);

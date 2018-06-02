@@ -7,14 +7,19 @@
 
 START_TEST (test_stack)
         {
+            // basic insert
             for (int i = 0; i < 50; i++)
                 push(i);
+            // check on fullness
             ck_assert_int_eq(1, push(50));
+            // check top element
             ck_assert_int_eq(49, (int)pick());
+            // clear
             for (int i = 0; i < 50; i++)
                 pop();
-            // check on infinity
+            // check on emptiness
             ck_assert(isinf(pop()));
+            // check on structure of stack
             push(1);
             for (int i = 0; i < 50; i++)
                 push(i);
