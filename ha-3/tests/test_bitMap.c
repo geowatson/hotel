@@ -1,38 +1,26 @@
 #include <check.h>
 #include "bitMap.h"
+#include "stdlib.h"
 
-START_TEST (test_setBitByNumber)
+START_TEST (test_bitmap)
 {
-    //YOUR CODE HERE
+//    int *a = malloc(4 * sizeof(int));
+    int a[4] = {0};
+    setBitByNumber(a, 1, 1);
+//    ck_assert_int_eq(1, getBitByNumber(a, -1));
+//    setBitByNumber(a, 0, 10);
+//    ck_assert_int_eq(0, getBitByNumber(a, 10));
+//    setBitByNumber(a, 1, 11);
+//    ck_assert_int_eq(1, getBitByNumber(a, 11));
 }
 END_TEST
 
-START_TEST (test_getBitByNumber)
-{
-    //YOUR CODE HERE
-}
-END_TEST
-
-START_TEST (test_setBitByAddress)
-{
-    //YOUR CODE HERE
-}
-END_TEST
-
-START_TEST (test_getBitByAddress)
-{
-    //YOUR CODE HERE
-}
-END_TEST
 
 Suite *str_suite(void) {
-    Suite *suite = suite_create("priority queue");
+    Suite *suite = suite_create("Bitset");
     TCase *tcase = tcase_create("case");
 
-    tcase_add_test(tcase, test_setBitByNumber);
-    tcase_add_test(tcase, test_getBitByNumber);
-    tcase_add_test(tcase, test_setBitByAddress);
-    tcase_add_test(tcase, test_getBitByAddress);
+    tcase_add_test(tcase, test_bitmap);
 
     suite_add_tcase(suite, tcase);
     return suite;

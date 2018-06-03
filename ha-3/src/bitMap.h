@@ -5,6 +5,8 @@
 #ifndef __BITMAP_H_
 #define __BITMAP_H_
 
+#include "stdio.h"
+
 void setBitByNumber(int* array, int bit, int position);
 
 int getBitByNumber(int* array, int position);

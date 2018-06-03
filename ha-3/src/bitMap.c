@@ -10,15 +10,15 @@ void setBitByNumber(int* array, int bit, int position)
 	// bit - have to be equal to 0 or 1
 	//
 	// this function changes bit with number 'position' to the 'bit'
-
-	/* YOUR CODE */
+    printf("%d\n", (int)sizeof((array)));
+	array[position/(sizeof(int) * 8)] = bit ? array[position/(sizeof(int) * 8)] | (1 << position % (sizeof(int) * 8)) : array[position/(sizeof(int) * 8)] & ~(1 << position % (sizeof(int) * 8));
 }
 
 int getBitByNumber(int* array, int position)
 {
 	// this function returns position's bit from the array 
 
-	/* YOUR CODE */
+    return ( array[position/(sizeof(int) * 8)] & (1 << position % (sizeof(int) * 8)) ) != 0;
 }
 
 void setBitByAddress(void* position, int bit)
@@ -28,7 +28,7 @@ void setBitByAddress(void* position, int bit)
 	//
 	// this function changes bit by memory address to 'bit'
 
-	/* YOUR CODE */
+    printf("%d\n", (int)sizeof(*(char*)position));
 }
 
 int getBitByAddress(void* position)
