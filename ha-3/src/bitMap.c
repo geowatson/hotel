@@ -3,6 +3,7 @@
 //
 #include "bitMap.h"
 
+
 void setBitByNumber(int* array, int bit, int position)
 {
 	// array - pointer to the begining of the array
@@ -10,7 +11,8 @@ void setBitByNumber(int* array, int bit, int position)
 	// bit - have to be equal to 0 or 1
 	//
 	// this function changes bit with number 'position' to the 'bit'
-    printf("%d\n", (int)sizeof((array)));
+
+    // printf("%d\n", (int)sizeof((array)));
 	array[position/(sizeof(int) * 8)] = bit ? array[position/(sizeof(int) * 8)] | (1 << position % (sizeof(int) * 8)) : array[position/(sizeof(int) * 8)] & ~(1 << position % (sizeof(int) * 8));
 }
 
@@ -28,12 +30,12 @@ void setBitByAddress(void* position, int bit)
 	//
 	// this function changes bit by memory address to 'bit'
 
-    printf("%d\n", (int)sizeof(*(char*)position));
+    setBitByNumber((int*)position, bit, 0);
 }
 
 int getBitByAddress(void* position)
 {
 	// this function returns first bit by memory address 'position'
-	
-	/* YOUR CODE */
+
+    return getBitByNumber((int*)position, 0);
 }
