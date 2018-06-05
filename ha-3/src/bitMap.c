@@ -3,25 +3,45 @@
 //
 #include "bitMap.h"
 
+/*
+ * Prefferable way to store bit fields.
+ */
+#define setbit(arr, bit, pos) do { \
+    ((char *)arr)[pos/(sizeof(char) * 8)] = bit \
+            ? ((char *)arr)[pos/(sizeof(char) * 8)] | (1 << (pos % (sizeof(char) * 8))) \
+            : ((char *)arr)[pos/(sizeof(char) * 8)] & ~(1 << (pos % (sizeof(char) * 8))); \
+} while (0);
 
-void setBitByNumber(int* array, int bit, int position)
+#define getbit(arr, pos) (((char *)arr)[pos/(sizeof(char) * 8)] & (1 << (pos % (sizeof(char) * 8)))) != 0
+
+
+void setBitByNumber(void* array, int bit, int position)
 {
-	// array - pointer to the begining of the array
+	// array - pointer to the beginning of the array
 	// position - number of the bit in the 'array'
 	// bit - have to be equal to 0 or 1
 	//
 	// this function changes bit with number 'position' to the 'bit'
 
-    // printf("%d\n", (int)sizeof((array)));
-	array[position/(sizeof(int) * 8)] = bit ? array[position/(sizeof(int) * 8)] | (1 << position % (sizeof(int) * 8)) : array[position/(sizeof(int) * 8)] & ~(1 << position % (sizeof(int) * 8));
+    setbit(array, bit, position);
 }
 
-int getBitByNumber(int* array, int position)
+int getBitByNumber(void* array, int position)
 {
 	// this function returns position's bit from the array 
 
-    return ( array[position/(sizeof(int) * 8)] & (1 << position % (sizeof(int) * 8)) ) != 0;
+    return getbit(array, position);
 }
+
+/*
+ * Preface: byAddr is not prefferable way
+ * to store bit values: pointer arithmetics
+ * rely on less significant type on the computer,
+ * and as soon as char is going to be 1 bytes (on most systems)
+ * we are dealing with direct mapping by-byte (usually called
+ * byte addressable memory), so that we cannot override every bit
+ * in memory using pointers in C.
+ */
 
 void setBitByAddress(void* position, int bit)
 {
@@ -29,13 +49,11 @@ void setBitByAddress(void* position, int bit)
 	// bit - have to be equal to 0 or 1
 	//
 	// this function changes bit by memory address to 'bit'
-
-    setBitByNumber((int*)position, bit, 0);
+    setBitByNumber(position, bit, 0);
 }
 
 int getBitByAddress(void* position)
 {
 	// this function returns first bit by memory address 'position'
-
-    return getBitByNumber((int*)position, 0);
+    return getBitByNumber(position, 0);
 }

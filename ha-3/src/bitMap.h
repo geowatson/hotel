@@ -7,9 +7,9 @@
 
 #include "stdio.h"
 
-void setBitByNumber(int* array, int bit, int position);
+void setBitByNumber(void* array, int bit, int position);
 
-int getBitByNumber(int* array, int position);
+int getBitByNumber(void* array, int position);
 
 void setBitByAddress(void* position, int bit);
 
