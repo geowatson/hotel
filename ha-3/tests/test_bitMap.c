@@ -5,9 +5,9 @@
 START_TEST (test_bitmap)
 {
     // test by number
-    for (int j = 0; j < 500; ++j) {
-        char *a = malloc(100 * sizeof(char));
-        for (int i = 0; i < 100 * sizeof(char) * 8; ++i)
+    for (int j = 0; j < 50; ++j) {
+        int *a = malloc(100 * sizeof(int));
+        for (int i = 0; i < 100 * sizeof(int) * 8; ++i)
             setBitByNumber(a, 0, i);
         {
             setBitByNumber(a, 1, 13);
@@ -17,7 +17,7 @@ START_TEST (test_bitmap)
             setBitByNumber(a, 1, 167);
         }
 
-        for (int i = 0; i < 100 * sizeof(char) * 8; ++i)
+        for (int i = 0; i < 100 * sizeof(int) * 8; ++i)
             if (i != 13 && i != 17 && i != 41 && i != 98 && i != 167)
                 ck_assert_int_eq(0, getBitByNumber(a, i));
             else

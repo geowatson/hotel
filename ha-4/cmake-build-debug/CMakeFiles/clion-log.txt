@@ -1,0 +1,7 @@
+"/Users/geowatson/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/181.4668.70/CLion.app/Contents/bin/cmake/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/geowatson/hotel/ha-4
+-- Could NOT find PkgConfig (missing: PKG_CONFIG_EXECUTABLE) 
+-- Checking for one of the modules 'check'
+-- Found CHECK: /usr/local/lib/libcheck.dylib
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/geowatson/hotel/ha-4/cmake-build-debug
