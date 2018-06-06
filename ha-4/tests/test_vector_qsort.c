@@ -15,11 +15,12 @@ int comp_vectors_int(const void *a, const void *b)
 
 START_TEST(test_vector_qsort)
 {
-	struct Vector *v = vector_create(10, sizeof(int));
+	struct Vector *v = vector_create_int(10);
 
+    vector_push_back_int(v, 0);
 	for (int i = 0; i < 5; ++i) {
 	    int j = 5 - i;
-        vector_push_back(v, &j);
+        vector_push_back_int(v, j);
 	}
 
 	/* before qsort */
