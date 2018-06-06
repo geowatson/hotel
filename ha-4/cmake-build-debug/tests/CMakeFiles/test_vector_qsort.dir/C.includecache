@@ -47,6 +47,8 @@ stdlib.h
 -
 stdio.h
 /Users/geowatson/hotel/ha-4/tests/stdio.h
+ranlib.h
+/Users/geowatson/hotel/ha-4/tests/ranlib.h
 
 /usr/local/include/check.h
 stddef.h

@@ -6,6 +6,7 @@
 #include "vector_int.h"
 #include <stdlib.h>
 #include "stdio.h"
+#include "ranlib.h"
 
 int comp_vectors_int(const void *a, const void *b)
 /* Returns -ve if a<b, 0 if a==b, +ve if a>b */
@@ -23,10 +24,9 @@ START_TEST(test_vector_qsort)
     printf("Test 1:\n");
     vector_push_back_int(v, 0);
 	for (int i = 0; i < 5; ++i) {
-	    int j = 5 - i;
+	    int j = (int)random() % 5 + 1;
         vector_push_back_int(v, j);
 	}
-
 	/* before qsort */
     for (int i = 0; i < vector_get_size(v); ++i) {
         printf("%d ", *(int*)vector_get_element(v, (size_t)i));
@@ -38,7 +38,8 @@ START_TEST(test_vector_qsort)
     /* after qsort */
 	for (int i = 0; i < vector_get_size(v); ++i) {
 		printf("%d ", *(int*)vector_get_element(v, (size_t)i));
-		ck_assert_int_eq(i, *(int*)vector_get_element(v, (size_t)i));
+		if (i < vector_get_size(v) - 1)
+		    ck_assert_int_le(*(int*)vector_get_element(v, (size_t)i), *(int*)vector_get_element(v, (size_t)(i + 1)));
 	}
 	printf("\n\n");
 
@@ -48,9 +49,8 @@ START_TEST(test_vector_qsort)
 
     struct Vector *v2 = vector_create_int(10);
     printf("Test 2:\n");
-    vector_push_back_int(v2, 0);
     for (int i = 1; i < 6; ++i) {
-        int j = i;
+        int j = 6 - i;
         vector_push_back_int(v2, j);
     }
 
@@ -65,7 +65,8 @@ START_TEST(test_vector_qsort)
     /* after qsort */
     for (int i = 0; i < vector_get_size(v2); ++i) {
         printf("%d ", *(int*)vector_get_element(v2, (size_t)i));
-        ck_assert_int_eq(i, *(int*)vector_get_element(v2, (size_t)i));
+        if (i < vector_get_size(v2) - 1)
+        ck_assert_int_le(*(int*)vector_get_element(v2, (size_t)i), *(int*)vector_get_element(v2, (size_t)(i + 1)));
     }
     printf("\n\n");
 }
