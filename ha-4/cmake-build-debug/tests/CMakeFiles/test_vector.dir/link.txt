@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/cc  -std=c99 -Wall -Wextra -Wshadow -g -O0 -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/test_vector.dir/test_vector.c.o CMakeFiles/test_vector.dir/__/src/vector.c.o  -o test_vector /usr/local/lib/libcheck.dylib 
