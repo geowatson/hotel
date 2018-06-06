@@ -17,6 +17,10 @@ START_TEST(test_vector_qsort)
 {
 	struct Vector *v = vector_create_int(10);
 
+	/*
+	 * Test 1
+	 */
+    printf("Test 1:\n");
     vector_push_back_int(v, 0);
 	for (int i = 0; i < 5; ++i) {
 	    int j = 5 - i;
@@ -34,8 +38,36 @@ START_TEST(test_vector_qsort)
     /* after qsort */
 	for (int i = 0; i < vector_get_size(v); ++i) {
 		printf("%d ", *(int*)vector_get_element(v, (size_t)i));
+		ck_assert_int_eq(i, *(int*)vector_get_element(v, (size_t)i));
 	}
-	printf("\n");
+	printf("\n\n");
+
+    /*
+     * Test 2
+     */
+
+    struct Vector *v2 = vector_create_int(10);
+    printf("Test 2:\n");
+    vector_push_back_int(v2, 0);
+    for (int i = 1; i < 6; ++i) {
+        int j = i;
+        vector_push_back_int(v2, j);
+    }
+
+    /* before qsort */
+    for (int i = 0; i < vector_get_size(v2); ++i) {
+        printf("%d ", *(int*)vector_get_element(v2, (size_t)i));
+    }
+    printf("\n");
+
+    qsort(vector_get_begin(v2), vector_get_size(v2), sizeof(int), comp_vectors_int);
+
+    /* after qsort */
+    for (int i = 0; i < vector_get_size(v2); ++i) {
+        printf("%d ", *(int*)vector_get_element(v2, (size_t)i));
+        ck_assert_int_eq(i, *(int*)vector_get_element(v2, (size_t)i));
+    }
+    printf("\n\n");
 }
 END_TEST
 
